@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({ text }) => {
+export default ({ note: { text }}) => {
   return (
-    <div>
-      <p>text</p>
+    <div className="note">
+      <p>{text}</p>
     </div>
   )
 }

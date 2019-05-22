@@ -1,9 +1,11 @@
-import React from 'react';
-import Note from './Note';
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookie';
+import React, { Component } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
+import Note from './Note';
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
 
-export default class App extends React.Component {
+const cookie_key = 'NOTES';
+
+export default class App extends Component {
   constructor(props) {
     super(props);
 
@@ -12,21 +14,29 @@ export default class App extends React.Component {
       notes: []
     }
   }
+  componentDidMount() {
+    this.setState({ notes: read_cookie(cookie_key) });
+  }
 
   submit = () => {
     const { notes, text } = this.state;
     this.setState({ notes: [...notes, { text }] });
+    bake_cookie(cookie_key, this.state.notes);
+  };
+
+  clear = () => {
+    this.setState({ notes: [] });
+    // delete_cookie(cookie_key);
   };
 
   render() {
     return (
       <div>
-        <h1>Note to self</h1>
+        <h1>Note to Self</h1>
         <Form inline>
-          <FormControl onChange={e => this.setState({ text: e.target.value })}>
-          </FormControl>
+          <FormControl onChange={e => this.setState({ text: e.target.value })} />
           {' '}
-          <Button onClick={this.submit()}>Submit</Button>
+          <Button onClick={this.submit}>Submit</Button>
         </Form>
         {
           this.state.notes.map((note, i) => {
@@ -35,6 +45,8 @@ export default class App extends React.Component {
             )
           })
         }
+        <hr />
+        <Button onClick={this.clear}>Clear Notes</Button>
       </div>
     )
   }
