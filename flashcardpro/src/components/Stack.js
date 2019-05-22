@@ -6,7 +6,7 @@ import Card from './Card';
 export const Stack = ({ stack: { title, cards } }) => {
   return (
     <div>
-      <Link className='link-home' to="/">Home</Link>
+      <Link className='link-home' to="/"><h4>Home</h4></Link>
       <h3>{title}</h3>
       <br />
       {cards.map(card => <Card key={card.id} card={card} />)}

@@ -4,7 +4,7 @@ import { Form, FormControl, FormGroup, FormLabel, Button } from 'react-bootstrap
 import { connect } from 'react-redux';
 import { addStack } from 'actions';
 
-class StackForm extends Component {
+export class StackForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +68,7 @@ class StackForm extends Component {
         <br />
         <Button onClick={this.addCard}>Add Card</Button>
         {' '}
-        <Button onClick={this.addStack}>Save and Add Stack</Button>
+        <Button onClick={this.addStack}>Save and Add the Stack</Button>
       </div>
     )
   }

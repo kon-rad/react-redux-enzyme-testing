@@ -4,9 +4,11 @@ import stacks from '../data/stacksJson.json';
 import { Link } from 'react-router-dom';
 import { setStack, loadStacks } from 'actions';
 
-class StackList extends Component {
+export class StackList extends Component {
   componentDidMount() {
+    console.log('mount, props', this.props);
     if (this.props.stacks.length === 0) {
+      console.log('calling load');
       this.props.loadStacks(stacks);
     }
   }
@@ -32,7 +34,6 @@ class StackList extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('list map', state);
   return { stacks: state.stacks }
 }
 
