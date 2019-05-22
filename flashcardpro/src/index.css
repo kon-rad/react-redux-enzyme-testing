@@ -1,0 +1,19 @@
+.card-prompt {
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+.card-answer {
+    display: inline-block;
+    text-align: right;
+    width: 50%;
+}
+.text-hidden {
+    visibility: hidden;
+}
+.text-revealed {
+    animation-name: fade-in;
+    animation-duration: 1s;
+    visibility: visible;
+}
+
