@@ -8,7 +8,7 @@ export function setCategories(categories) {
   }
 }
 
-export function pickCategories(category) {
+export function pickCategory(category) {
   return {
     type: PICK_CATEGORY,
     category

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCategories } from 'actions';
+import { setCategories, pickCategory } from 'actions';
 import { Link } from 'react-router-dom';
 
 class App extends Component {
@@ -38,4 +38,4 @@ function mapStateToProps(state) {
   console.log('stat', state);
   return { categories: state.categories };
 }
-export default connect(mapStateToProps, { setCategories })(App);
+export default connect(mapStateToProps, { setCategories, pickCategory })(App);
