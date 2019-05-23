@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setCategories, pickCategory } from 'actions';
 import { Link } from 'react-router-dom';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     if (this.props.categories.length !== 0) {
       return;
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>jeopardy!</h1>
+        <h1>Jeopardy!</h1>
         {
           this.props.categories.map(cat => {
             return (
@@ -35,7 +35,6 @@ class App extends Component {
   }
 }
 function mapStateToProps(state) {
-  console.log('stat', state);
   return { categories: state.categories };
 }
 export default connect(mapStateToProps, { setCategories, pickCategory })(App);
