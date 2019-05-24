@@ -26,27 +26,29 @@ describe('Category', () => {
 
   describe('when creating a new category', () => {
     let category;
-    beforeEach((done) => {
+
+    beforeEach(done => {
       category = mount(<Category {...props} />);
       server.respond();
-      setTimeout(done);
+      setTimeout(done, 100);
     });
 
     // it('logs the category', () => {
     //   console.log(category.debug());
     // });
 
-    // it('initializes the clues in state', () => {
-    //   expect(category.state().clues).toEqual(clues);
-    // });
+    it('initializes the clues in state', () => {
+      expect(category.state().clues).toEqual(clues);
+    });
 
     it('renders the category title', () => {
       expect(category.find('h2').text()).toEqual(props.category.title);
     });
 
-    // it('renders the correct number of clues', () => {
-    //   expect(category.find('Clue').length).toEqual(clues.length);
-    // });
+    it('renders the correct number of clues', () => {
+      category.update();
+      expect(category.find('Clue').length).toEqual(clues.length);
+    });
   });
 });
 
